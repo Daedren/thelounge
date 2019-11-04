@@ -3,6 +3,7 @@
 		<Sidebar v-if="$store.state.appLoaded" :overlay="$refs.overlay" />
 		<div id="sidebar-overlay" ref="overlay" @click="$store.commit('sidebarOpen', false)" />
 		<router-view ref="window"></router-view>
+		<Mentions />
 		<ImageViewer ref="imageViewer" />
 		<ContextMenu ref="contextMenu" />
 		<div id="upload-overlay"></div>
@@ -18,6 +19,7 @@ import storage from "../js/localStorage";
 import Sidebar from "./Sidebar.vue";
 import ImageViewer from "./ImageViewer.vue";
 import ContextMenu from "./ContextMenu.vue";
+import Mentions from "./Mentions.vue";
 
 export default {
 	name: "App",
@@ -25,6 +27,7 @@ export default {
 		Sidebar,
 		ImageViewer,
 		ContextMenu,
+		Mentions,
 	},
 	computed: {
 		viewportClasses() {
