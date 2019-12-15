@@ -13,7 +13,6 @@
 #help .documentation-link::before { content: "\f19d"; /* http://fontawesome.io/icon/graduation-cap/ */ }
 #help .report-issue-link::before { content: "\f188"; /* http://fontawesome.io/icon/bug/ */ }
 
-
 #help .help-version-title {
 	display: flex;
 	justify-content: space-between;

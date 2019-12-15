@@ -16,7 +16,6 @@
 @import "context-menu.css";
 @import "image-viewer.css";
 
-
 #chat .away .from::before,
 #chat .back .from::before {
 	content: "\f017"; /* https://fontawesome.com/icons/clock?style=solid */
