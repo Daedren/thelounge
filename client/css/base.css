@@ -1,0 +1,297 @@
+
+::placeholder {
+	color: rgba(0, 0, 0, 0.35);
+	opacity: 1; /* fix opacity in Firefox */
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+input,
+button,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+img {
+	vertical-align: middle;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+abbr[title] {
+	cursor: help;
+}
+
+html,
+body {
+	height: 100%;
+	overscroll-behavior: none; /* prevent overscroll navigation actions */
+}
+
+body {
+	background: var(--body-bg-color);
+	color: var(--body-color);
+	font: 16px -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	margin: 0;
+	user-select: none;
+	cursor: default;
+	touch-action: none;
+
+	/**
+	  * Disable pull-to-refresh on mobile that conflicts with scrolling the message list.
+	  * See http://stackoverflow.com/a/29313685/1935861
+	  */
+	overflow-y: hidden;
+}
+
+a,
+a:hover,
+a:focus {
+	color: var(--link-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+h1,
+h2,
+h3 {
+	font: inherit;
+	line-height: inherit;
+	margin: 0;
+}
+
+button {
+	border: none;
+	background: none;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	user-select: inherit;
+	cursor: pointer;
+}
+
+code,
+pre,
+#chat .msg.motd .text,
+.irc-monospace,
+textarea#user-specified-css-input {
+	font-family: Consolas, Menlo, Monaco, "Lucida Console", "DejaVu Sans Mono", "Courier New", monospace;
+}
+
+code,
+.irc-monospace {
+	font-size: 13px;
+	padding: 2px 4px;
+	color: #e74c3c;
+	background-color: #f9f2f4;
+	border-radius: 2px;
+}
+
+pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+}
+
+kbd {
+	display: inline-block;
+	font-family: inherit;
+	line-height: 1em;
+	min-width: 28px; /* Ensure 1-char keys have the same width */
+	margin: 0 1px;
+	padding: 4px 6px;
+	color: #444;
+	text-align: center;
+	text-shadow: 0 1px 0 #fff;
+	background-color: white;
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.05), transparent);
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	box-shadow: 0 2px 0 #bbb, inset 0 1px 1px #fff, inset 0 -1px 3px #ccc;
+}
+
+p {
+	margin: 0 0 10px;
+}
+
+.btn {
+	border: 2px solid var(--button-color);
+	border-radius: 3px;
+	color: var(--button-color);
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	padding: 9px 17px;
+	text-transform: uppercase;
+	transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+	word-spacing: 3px;
+	cursor: pointer; /* This is useful for `<button>` elements */
+}
+
+.btn-small {
+	padding: 5px 13px;
+}
+
+.btn:disabled,
+.btn:hover,
+.btn:focus {
+	background: var(--button-color);
+	color: var(--button-text-color-hover);
+	opacity: 1;
+}
+
+.input:focus,
+.btn:active,
+.btn:focus {
+	outline: 0;
+	box-shadow: 0 0 0 3px rgba(132, 206, 136, 0.5);
+}
+
+.btn:active {
+	opacity: 0.8;
+}
+
+.btn:disabled {
+	opacity: 0.6;
+}
+
+.btn-sm {
+	padding: 4px 8px;
+	border-width: 1px;
+	letter-spacing: 0;
+	word-spacing: 0;
+	text-transform: none;
+}
+
+.container {
+	padding: 0 15px;
+	margin-bottom: 20px;
+	width: 480px;
+	align-self: center;
+	touch-action: pan-y;
+}
+
+.only-copy {
+	font-size: 0;
+	opacity: 0;
+	width: 0;
+}
+
+.input {
+	background-color: white;
+	border: 1px solid #cdd3da;
+	border-radius: 2px;
+	color: #222;
+	font-size: 14px;
+	margin: 2px 0;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	transition: border-color 0.2s, box-shadow 0.2s;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+}
+
+.input:disabled {
+	background-color: #ddd;
+}
+
+.input:not(:disabled):hover,
+.input:not(:disabled):focus {
+	border-color: #84ce88;
+}
+
+textarea.input {
+	resize: vertical;
+	height: 100px;
+	min-height: 35px;
+	padding: 6px 10px;
+	line-height: 1.5;
+}
+
+.emoji {
+	font-size: 1.4em;
+	vertical-align: text-top;
+	line-height: 1;
+}
+
+.tooltipped::after {
+	font-size: 12px;
+}
+
+/* Define which elements have user selectable text */
+#js-copy-hack,
+#loading pre,
+#help .container,
+#changelog .container,
+.header .title,
+.header .topic,
+#chat .messages {
+	user-select: text;
+	cursor: text;
+}
+
+#js-copy-hack {
+	position: absolute;
+	left: -999999px;
+}
+
+#chat #js-copy-hack .condensed:not(.closed) .msg,
+#chat #js-copy-hack > .msg {
+	display: block;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar:hover {
+	background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+	background: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,40 @@
+
+:root {
+	/* Main text color */
+	--body-color: #222;
+
+	/* Secondary text color, dimmed. Make sure to keep contrast WCAG 2.0 AA compliant on var(--window-bg-color) */
+	--body-color-muted: #767676;
+
+	/* Background color of the whole page */
+	--body-bg-color: #415364;
+
+	/* Main button color. Applies to border, text, and background on hover */
+	--button-color: #84ce88;
+	--button-text-color-hover: #fff;
+
+	/* Color for sidebar overlay and other things that dim the viewport when something else is on top */
+	--overlay-bg-color: rgba(0, 0, 0, 0.5);
+
+	/* Links and link-looking buttons */
+	--link-color: #50a656;
+
+	/* Background color of the main window */
+	--window-bg-color: #fff;
+
+	/* Text color for <h2> and <h3> headings in windows */
+	--window-heading-color: #6c797a;
+
+	/* Color of the date marker, text and separator */
+	--date-marker-color: rgba(0, 107, 59, 0.5);
+
+	/* Color of the unread message marker, text and separator */
+	--unread-marker-color: rgba(231, 76, 60, 0.5);
+
+	/* Background and left-border color of highlight messages */
+	--highlight-bg-color: #efe8dc;
+	--highlight-border-color: #b08c4f;
+
+	/* Color of the progress bar that appears as a file is being uploaded to the server. Defaults to button color */
+	--upload-progressbar-color: var(--button-color);
+}

@@ -1,0 +1,213 @@
+.channel-list-item .not-secure-icon::before { content: "\f071"; /* https://fontawesome.com/icons/exclamation-triangle?style=solid */ }
+
+.channel-list-item .not-connected-icon::before,
+.channel-list-item .parted-channel-icon::before {
+	content: "\f127"; /* https://fontawesome.com/icons/unlink?style=solid */
+}
+
+.context-menu-query::before,
+.context-menu-action-query::before,
+.channel-list-item[data-type="query"]::before { content: "\f075"; /* https://fontawesome.com/icons/comment?style=solid */ }
+
+.context-menu-chan::before,
+.channel-list-item[data-type="channel"]::before { content: "\f086"; /* http://fontawesome.io/icon/comments/ */ }
+
+.channel-list-item[data-type="special"]::before { content: "\f03a"; /* http://fontawesome.io/icon/list/ */ }
+
+.channel-list-item.has-draft:not(.active)::before { content: "\f304"; /* https://fontawesome.com/icons/pen?style=solid */ }
+
+.channel-list-item,
+#sidebar .empty {
+	color: #b7c5d1;
+	font-size: 14px;
+}
+
+.channel-list-item {
+	display: flex;
+	padding: 8px 14px;
+	position: relative;
+	cursor: pointer;
+}
+
+/* Channels/queries must be white on hover and active */
+.channel-list-item:hover,
+.channel-list-item.active {
+	color: #fff;
+}
+
+/* All lobbies/channels/queries and footer buttons must have a half-transparent
+background on hover (unless active) */
+.channel-list-item:hover,
+#footer button:hover {
+	background-color: rgba(48, 62, 74, 0.5); /* #303e4a x 50% alpha */
+}
+
+/* Darker background and defualt cursor for active channels */
+.channel-list-item.active {
+	background-color: #303e4a;
+	cursor: default;
+}
+
+/* Remove background on hovered/active channel when sorting/drag-and-dropping */
+.ui-sortable-ghost,
+.channel-list-item.ui-sortable-dragged,
+.ui-sortable-dragged .channel-list-item,
+.ui-sortable-active .channel-list-item:hover,
+.ui-sortable-active .channel-list-item.active {
+	background: transparent;
+}
+
+.ui-sortable-ghost::after {
+	background: var(--body-bg-color);
+	border: 1px dashed #99a2b4;
+	border-radius: 6px;
+	content: " ";
+	display: block;
+	position: absolute;
+	left: 10px;
+	top: 0;
+	bottom: 0;
+	right: 10px;
+}
+
+.channel-list-item[data-type="lobby"] {
+	color: #84ce88;
+	font-size: 15px;
+	font-weight: bold;
+	padding-left: 0;
+}
+
+.channel-list-item .lobby-wrap {
+	display: flex;
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+.channel-list-item[data-type="lobby"]:hover,
+.channel-list-item[data-type="lobby"].active {
+	color: #c0f8c3;
+}
+
+.channel-list-item .not-connected-tooltip,
+.channel-list-item .not-secure-tooltip,
+.channel-list-item .parted-channel-tooltip {
+	margin: 0 8px;
+}
+
+.network.not-secure .channel-list-item[data-type="lobby"] {
+	color: #f39c12;
+}
+
+.network.not-secure .channel-list-item[data-type="lobby"]:hover,
+.network.not-secure .channel-list-item[data-type="lobby"].active {
+	color: #f8c572;
+}
+
+.network.not-connected .channel-list-item[data-type="lobby"],
+.channel-list-item.parted-channel {
+	color: #e74c3c;
+}
+
+.network.not-connected .channel-list-item[data-type="lobby"]:hover,
+.network.not-connected .channel-list-item[data-type="lobby"].active,
+.channel-list-item.parted-channel:hover,
+.channel-list-item.parted-channel.active {
+	color: #f1978e;
+}
+
+.channel-list-item::before {
+	width: 14px;
+	margin-right: 12px;
+	line-height: 18px;
+}
+
+.channel-list-item .name {
+	position: relative;
+	flex-grow: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-right: 5px;
+}
+
+.header .topic,
+.channel-list-item .name {
+	mask-image: linear-gradient(to left, transparent, black 20px);
+}
+
+.channel-list-item .badge,
+#sidebar .add-channel-tooltip,
+.channel-list-item .close-tooltip {
+	flex-shrink: 0;
+	line-height: 1;
+}
+
+.channel-list-item .badge {
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 3px;
+	color: #afb6c0;
+	font-size: 10px;
+	padding: 4px 6px;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.channel-list-item .badge:empty {
+	display: none;
+}
+
+.channel-list-item .badge.highlight {
+	background: #fff;
+	color: #49505a;
+}
+
+.channel-list-item .close {
+	width: 18px;
+	height: 18px;
+	display: none;
+	transition: opacity 0.2s, background-color 0.2s;
+}
+
+.channel-list-item .close::before {
+	font-size: 20px;
+	font-weight: normal;
+	display: inline-block;
+	line-height: 16px;
+	text-align: center;
+	content: "×";
+	color: #fff;
+}
+
+.channel-list-item.active .close {
+	opacity: 0.4;
+	display: unset;
+}
+
+.channel-list-item.active .close:hover {
+	opacity: 1;
+}
+
+.channel-list-item[data-type="lobby"] .add-channel {
+	border-radius: 3px;
+	width: 18px;
+	height: 18px;
+	opacity: 0.4;
+	transition: opacity 0.2s, background-color 0.2s, transform 0.2s;
+}
+
+.channel-list-item[data-type="lobby"] .add-channel::before {
+	font-size: 20px;
+	font-weight: normal;
+	display: inline-block;
+	line-height: 16px;
+	text-align: center;
+	content: "+";
+	color: #fff;
+}
+
+.channel-list-item[data-type="lobby"] .add-channel:hover {
+	opacity: 1;
+}
+
+.channel-list-item[data-type="lobby"] .add-channel.opened {
+	/* translateZ(0) enables hardware acceleration, this is to avoid jittering when animating */
+	transform: rotate(45deg) translateZ(0);
+}

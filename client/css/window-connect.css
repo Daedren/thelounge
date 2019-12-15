@@ -1,0 +1,43 @@
+#connect .connect-row {
+	display: flex;
+}
+
+#connect .connect-row > .input,
+#connect .connect-row > .input-wrap {
+	flex-grow: 1;
+}
+
+#connect label {
+	width: 25%;
+	flex-shrink: 0;
+	margin-top: 11px;
+}
+
+#connect .tls {
+	width: 100%;
+	display: block;
+	margin-top: 6px;
+}
+
+#connect .tls input {
+	margin: 3px 10px 0 0;
+}
+
+#connect\:host {
+	width: 70%;
+}
+
+#connect\:port {
+	width: 25%;
+}
+
+#connect\:portseparator {
+	width: 5%;
+	text-align: center;
+	display: inline-block;
+}
+
+#connect .btn {
+	margin-left: 25%;
+	margin-top: 15px;
+}

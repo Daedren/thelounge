@@ -1,0 +1,191 @@
+#viewport .lt::before { content: "\f0c9"; /* http://fontawesome.io/icon/bars/ */ }
+#viewport .rt::before { content: "\f0c0"; /* https://fontawesome.com/icons/users?style=solid */ }
+#chat button.menu::before { content: "\f142"; /* http://fontawesome.io/icon/ellipsis-v/ */ }
+
+#viewport {
+	display: flex;
+	height: 100%;
+}
+
+
+#viewport .lt,
+#viewport .rt,
+#chat button.menu {
+	color: #607992;
+	display: flex;
+	font-size: 14px;
+	line-height: 1;
+	height: 36px;
+	width: 36px;
+	margin-top: 6px;
+	flex-shrink: 0;
+}
+
+#viewport .lt::before,
+#viewport .rt::before,
+#chat button.menu::before {
+	width: 36px;
+	line-height: 36px; /* Fix alignment in Microsoft Edge */
+}
+
+/* Channel list button stays fixed when scrolling... */
+#viewport .lt {
+	position: fixed;
+}
+
+/* ... Except on chat windows, relative to include the notification dot */
+#viewport #chat .lt {
+	position: relative;
+}
+
+/* Notification dot on the top right corner of the menu icon */
+#viewport .lt::after {
+	content: "";
+	position: absolute;
+	top: 9px;
+	right: 7px;
+	background-color: #e74c3c;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid var(--window-bg-color);
+	opacity: 0;
+	transition: opacity 0.2s;
+	background-clip: padding-box; /* Fix border-radius bleeding color */
+}
+
+#viewport.notified .lt::after {
+	opacity: 1;
+}
+
+#viewport.userlist-open #chat .userlist {
+	display: flex;
+}
+
+.window li,
+.window p,
+.window label {
+	font-size: 14px;
+}
+
+.window {
+	background: var(--window-bg-color);
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	position: relative;
+	overflow-y: auto;
+	height: 100%;
+	scrollbar-width: thin;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+}
+
+.window h1 {
+	font-size: 36px;
+}
+
+.window h2 {
+	border-bottom: 1px solid currentColor;
+	color: var(--window-heading-color);
+	font-size: 22px;
+	margin: 30px 0 10px;
+	padding-bottom: 7px;
+}
+
+.window h2 small {
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.window h3 {
+	color: var(--window-heading-color);
+	font-size: 18px;
+	margin: 20px 0 10px;
+}
+
+.header {
+	line-height: 45px;
+	height: 45px;
+	padding: 0 6px;
+	display: flex;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+
+#chat .header {
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.header .title {
+	font-size: 15px;
+	padding-left: 6px;
+	flex-shrink: 0;
+}
+
+#loading {
+	display: flex;
+	font-size: 14px;
+	height: 100%;
+}
+
+#loading .window {
+	height: initial;
+	display: flex;
+	flex-direction: column;
+}
+
+#loading p {
+	margin-top: 10px;
+}
+
+#loading-slow,
+#loading-reload {
+	visibility: hidden;
+}
+
+#loading summary {
+	outline: none;
+	cursor: pointer;
+}
+
+#loading pre {
+	text-align: left;
+	white-space: normal;
+}
+
+#sign-in .container,
+#loading-reload-container,
+#loading-status-container {
+	flex: 1 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+#loading-reload-container {
+	flex-grow: 0;
+}
+
+#loading .logo-inverted,
+.window .logo-inverted {
+	display: none; /* In dark themes, inverted logo must be used instead */
+}
+
+#sign-in label {
+	display: block;
+	margin-top: 10px;
+	width: 100%;
+}
+
+#sign-in .btn {
+	margin-top: 25px;
+}
+
+#sign-in .error {
+	color: #e74c3c;
+	margin-top: 1em;
+	width: 100%;
+}

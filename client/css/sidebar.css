@@ -1,0 +1,118 @@
+#footer .connect::before { content: "\f067"; /* http://fontawesome.io/icon/plus/ */ }
+#footer .settings::before { content: "\f013"; /* http://fontawesome.io/icon/cog/ */ }
+#footer .help::before { content: "\f059"; /* http://fontawesome.io/icon/question/ */ }
+
+#sidebar {
+	display: none;
+	flex-direction: column;
+	width: 220px;
+	max-height: 100%;
+	will-change: transform;
+}
+
+#viewport.menu-open #sidebar {
+	display: flex;
+}
+
+#sidebar .scrollable-area {
+	overflow-x: auto;
+	flex-grow: 1;
+	touch-action: pan-y;
+	scrollbar-width: thin;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+}
+
+#sidebar .logo-container {
+	text-align: center;
+}
+
+#sidebar .logo,
+#sidebar .logo-inverted {
+	height: 45px;
+}
+
+#sidebar .logo {
+	display: none;
+}
+
+
+#sidebar .networks {
+	padding-top: 5px;
+}
+
+#sidebar .network {
+	position: relative;
+	margin-bottom: 20px;
+	touch-action: pan-y;
+}
+
+#sidebar .empty {
+	flex-grow: 1;
+	line-height: 1.6;
+	padding: 40px 20px;
+	text-align: center;
+}
+
+#sidebar .network .collapse-network {
+	width: 40px;
+	opacity: 0.4;
+	padding-left: 11px;
+	transition: opacity 0.2s;
+	flex-shrink: 0;
+}
+
+#sidebar .network .collapse-network-icon {
+	display: block;
+	width: 20px;
+	height: 20px;
+	transition: transform 0.2s;
+}
+
+#sidebar .network.collapsed .collapse-network-icon {
+	transform: rotate(-90deg);
+}
+
+#sidebar .network .collapse-network-icon::before {
+	content: "\f0d7"; /* http://fontawesome.io/icon/caret-down/ */
+	color: #fff;
+}
+
+#sidebar .collapse-network:hover {
+	opacity: 1;
+}
+
+#footer {
+	height: 45px;
+	font-size: 14px;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#footer button {
+	color: #b7c5d1;
+	display: inline-block;
+	width: 45px;
+	height: 100%;
+	border-radius: 5px;
+}
+
+#sidebar .join-form {
+	padding: 0 18px 8px;
+}
+
+#sidebar .join-form .input {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#sidebar .join-form .btn {
+	display: block;
+	width: 100%;
+	margin: auto;
+}
+
