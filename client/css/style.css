@@ -323,6 +323,7 @@ p {
 .channel-list-item .not-secure-icon::before,
 .channel-list-item .not-connected-icon::before,
 .channel-list-item .parted-channel-icon::before,
+.jump-to-input::before,
 #sidebar .collapse-network-icon::before {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: inherit; /* Can't have font-size inherit on line above, so need to override */
@@ -498,6 +499,7 @@ p {
 	content: "\f0da"; /* http://fontawesome.io/icon/caret-right/ */
 }
 
+.jump-to-input::before,
 #chat .count::before {
 	color: #cfcfcf;
 	content: "\f002"; /* http://fontawesome.io/icon/search/ */
@@ -606,6 +608,7 @@ p {
 	width: 220px;
 	max-height: 100%;
 	will-change: transform;
+	color: #b7c5d1; /* same as .channel-list-item color */
 }
 
 #viewport.menu-open #sidebar {
@@ -636,7 +639,6 @@ p {
 
 .channel-list-item,
 #sidebar .empty {
-	color: #b7c5d1;
 	font-size: 14px;
 }
 
@@ -686,10 +688,6 @@ background on hover (unless active) */
 	top: 0;
 	bottom: 0;
 	right: 10px;
-}
-
-#sidebar .networks {
-	padding-top: 5px;
 }
 
 #sidebar .network {
@@ -2794,61 +2792,59 @@ part/quit messages where we don't load previews (adds a blank line otherwise) */
 }
 
 /* Jump to feature WIP styles */
-#jump-to-container {
+.jump-to-input {
+	margin: 8px;
+	position: relative;
+}
+
+.jump-to-input .input {
+	margin: 0;
+	width: 100%;
+	border: 0;
+	color: inherit;
+	background-color: rgba(255, 255, 255, 0.1);
+	padding-right: 35px;
+}
+
+.jump-to-input .input::placeholder {
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.jump-to-input::before {
+	color: rgba(255, 255, 255, 0.35);
 	position: absolute;
-	left: 0;
-	right: 0;
+	right: 8px;
 	top: 0;
 	bottom: 0;
-	background: var(--overlay-bg-color);
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: flex-start;
-	padding: 3em;
+	pointer-events: none;
+	line-height: 35px;
 }
 
-#jump-to-container .jump-to-dialog {
-	background: var(--body-bg-color);
-	padding: 1em;
-	border-radius: 5px;
-	max-height: 100%;
-	flex-grow: 0;
-	height: auto;
-	display: flex;
-	flex-direction: column;
-}
-
-#jump-to-container .jump-to-dialog .input {
-	width: auto;
-}
-
-#jump-to-container .jump-to-dialog .results {
+.jump-to-results {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	overflow: auto;
 }
 
-#jump-to-container .jump-to-dialog .results .chan {
-	display: flex;
-	justify-content: space-between;
-	cursor: pointer;
-	padding: 0.5em 1em;
+.jump-to-results .no-results {
+	margin: 14px 8px;
+	text-align: center;
 }
 
-#jump-to-container .jump-to-dialog .results .chan .close-tooltip {
+.jump-to-results .channel-list-item.active {
+	cursor: pointer;
+}
+
+.jump-to-results .channel-list-item .add-channel,
+.jump-to-results .channel-list-item .close-tooltip {
 	display: none;
 }
 
-#jump-to-container .jump-to-dialog .results .active-result {
-	background: rgba(0, 0, 0, 0.3); /* TODO: better color */
-}
-
-#jump-to-container .channel-list-item[data-type="lobby"] {
+.jump-to-results .channel-list-item[data-type="lobby"] {
 	padding: 8px 14px;
 }
 
-#jump-to-container .channel-list-item[data-type="lobby"]::before {
+.jump-to-results .channel-list-item[data-type="lobby"]::before {
 	content: "\f233";
 }
