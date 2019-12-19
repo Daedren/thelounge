@@ -25,23 +25,23 @@
 		<div v-if="searchText" class="jump-to-results">
 			<div v-if="results.length" ref="results">
 				<div
-					v-for="[network, channel] in results"
-					:key="channel.id"
-					v-on="{mouseover: () => setActiveSearchItem(channel)}"
+					v-for="item in results"
+					:key="item.channel.id"
+					v-on="{mouseover: () => setActiveSearchItem(item.channel)}"
 					@click.prevent="selectResult"
 				>
 					<Channel
-						v-if="channel.type !== 'lobby'"
-						:channel="channel"
-						:network="network"
-						:active="channel === activeSearchItem"
+						v-if="item.channel.type !== 'lobby'"
+						:channel="item.channel"
+						:network="item.network"
+						:active="item.channel === activeSearchItem"
 						:is-filtering="true"
 					/>
 					<NetworkLobby
 						v-else
-						:channel="channel"
-						:network="network"
-						:active="channel === activeSearchItem"
+						:channel="item.channel"
+						:network="item.network"
+						:active="item.channel === activeSearchItem"
 						:is-filtering="true"
 					/>
 				</div>
@@ -149,7 +149,6 @@ export default {
 			return this.$store.state.networks;
 		},
 		items() {
-			// Array of [network, channel] tuples
 			const items = [];
 
 			for (const network of this.$store.state.networks) {
@@ -161,20 +160,15 @@ export default {
 						continue;
 					}
 
-					items.push([network, channel]);
+					items.push({network, channel});
 				}
 			}
-
-			// Sort by most unreads
-			items.sort((a, b) => {
-				return b[1].unread - a[1].unread;
-			});
 
 			return items;
 		},
 		results() {
 			const results = fuzzyFilter(this.searchText, this.items, {
-				extract: (item) => item[1].name,
+				extract: (item) => item.channel.name,
 			}).map((item) => item.original);
 
 			return results;
@@ -268,7 +262,7 @@ export default {
 			}
 
 			if (!channel) {
-				channel = this.results[0][1];
+				channel = this.results[0].channel;
 			}
 
 			this.activeSearchItem = channel;
@@ -291,7 +285,7 @@ export default {
 				return;
 			}
 
-			const channels = this.results.map((r) => r[1]);
+			const channels = this.results.map((r) => r.channel);
 
 			// Bail out if there's no channels to select
 			if (!channels.length) {
